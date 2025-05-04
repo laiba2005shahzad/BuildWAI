@@ -31,18 +31,15 @@ app = Flask(__name__)
 # Configuration
 ARTICLES_PER_SOURCE = 6
 
-# SadTalker configuration - ADJUST THESE PATHS FOR YOUR SETUP
-SADTALKER_PATH = os.path.join(os.getcwd(), "SadTalker")  # Path to SadTalker directory
+SADTALKER_PATH = os.path.join(os.getcwd(), "SadTalker")  
 SADTALKER_OUTPUT_PATH = os.path.join(os.getcwd(), "static", "videos")
 TEMP_DIR = os.path.join(os.getcwd(), "temp")
 
-# Anchor face images - PROVIDE REAL PATHS TO YOUR IMAGES
 AVATAR_IMAGES = {
     "en": os.path.join(os.getcwd(), "resources", "english_anchor.jpg"),
     "ur": os.path.join(os.getcwd(), "resources", "urdu_anchor.jpg")
 }
 
-# Ensure directories exist
 for directory in [SADTALKER_OUTPUT_PATH, TEMP_DIR, os.path.join(os.getcwd(), "resources")]:
     os.makedirs(directory, exist_ok=True)
 
