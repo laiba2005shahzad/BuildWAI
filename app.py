@@ -15,7 +15,7 @@ from pathlib import Path
 import sys
 import shutil
 
-# Configure logging
+
 logging.basicConfig(
     level=logging.DEBUG,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -46,7 +46,7 @@ AVATAR_IMAGES = {
 for directory in [SADTALKER_OUTPUT_PATH, TEMP_DIR, os.path.join(os.getcwd(), "resources")]:
     os.makedirs(directory, exist_ok=True)
 
-# News source URLs
+
 news_sources = {
     "english": [
         "https://www.bbc.com/",
@@ -58,7 +58,7 @@ news_sources = {
     ]
 }
 
-# Storage for latest news
+
 latest_news = {
     "english": [],
     "urdu": []
@@ -69,7 +69,6 @@ latest_videos = {
     "urdu": None
 }
 
-# Check if SadTalker exists
 def check_sadtalker_installation():
     """Check if SadTalker is properly installed"""
     if not os.path.exists(SADTALKER_PATH):
@@ -84,7 +83,6 @@ def check_sadtalker_installation():
         
     return True
 
-# Check for avatar images
 def check_avatar_images():
     """Check if avatar images exist"""
     missing_images = []
@@ -98,7 +96,6 @@ def check_avatar_images():
         return False
     return True
 
-# Initialize NLP components with error handling
 try:
     translator = Translator()
     summarizer = pipeline("summarization", model="facebook/bart-large-cnn")
@@ -210,7 +207,6 @@ def create_news_script(news_items, lang='en'):
 def generate_audio_from_text(text, output_path, lang='en'):
     """Generate audio file from text using TTS"""
     try:
-        # Try to import edge-tts
         try:
             from edge_tts import Communicate
             import asyncio
@@ -265,7 +261,6 @@ def create_avatar_video(script, lang='en'):
         output_dir = os.path.join(SADTALKER_OUTPUT_PATH, video_id)
         os.makedirs(output_dir, exist_ok=True)
         
-        # Select source image based on language
         source_image = AVATAR_IMAGES[lang]
         if not os.path.exists(source_image):
             logger.error(f"Source image not found: {source_image}")
@@ -280,7 +275,7 @@ def create_avatar_video(script, lang='en'):
             
         logger.info(f"Audio file created: {audio_file}")
         
-        # Run SadTalker to generate the talking head video
+        # here we go
         original_dir = os.getcwd()
         try:
             os.chdir(SADTALKER_PATH)
