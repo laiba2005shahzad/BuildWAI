@@ -1,0 +1,225 @@
+/* Global Styles */
+:root {
+    --primary-color: #0A5074;
+    --secondary-color: #E74C3C;
+    --text-color: #333;
+    --light-bg: #f8f9fa;
+    --dark-bg: #343a40;
+    --accent-color: #17a2b8;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--light-bg);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header Styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+header h1 {
+    color: var(--primary-color);
+    font-size: 32px;
+}
+
+.language-selector {
+    display: flex;
+    gap: 10px;
+}
+
+.language-selector button {
+    padding: 8px 16px;
+    background-color: #fff;
+    border: 1px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.language-selector button.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Main Content Styles */
+main {
+    min-height: 70vh;
+}
+
+#loading-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+}
+
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left: 4px solid var(--primary-color);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.video-container {
+    margin-bottom: 30px;
+    background-color: #000;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+}
+
+#news-video {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.news-headlines {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.news-headlines h2 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.headline-item {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.headline-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.headline-item h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.headline-item p {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.headline-item .source {
+    font-size: 12px;
+    color: #888;
+}
+
+#error-container {
+    text-align: center;
+    padding: 50px 0;
+}
+
+#error-container i {
+    font-size: 48px;
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+}
+
+#retry-btn {
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+/* Footer Styles */
+footer {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.action-buttons button {
+    padding: 8px 16px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.action-buttons button:hover {
+    background-color: #084260;
+}
+
+/* Utility Classes */
+.hidden {
+    display: none;
+}
+
+/* RTL Support for Urdu */
+.rtl {
+    direction: rtl;
+    text-align: right;
+}
+
+.rtl .headline-item {
+    text-align: right;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    footer {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+}
